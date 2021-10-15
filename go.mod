@@ -23,7 +23,7 @@ require (
 	github.com/rs/zerolog v1.5.0
 	github.com/streadway/amqp v0.0.0-20180315184602-8e4aba63da9f
 	github.com/stretchr/testify v1.7.0
-	github.com/uber/jaeger-client-go v2.22.1+incompatible
+	github.com/uber/jaeger-client-go v2.29.1+incompatible
 	github.com/uber/jaeger-lib v2.4.2-0.20210604143007-135cf5605a6d+incompatible
 	go.uber.org/atomic v1.6.0 // indirect
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e
