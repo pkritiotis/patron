@@ -22,30 +22,34 @@
 
 package atomic
 
-// Error is an atomic type-safe wrapper for error values.
-type Error struct {
+import (
+	"time"
+)
+
+// Time is an atomic type-safe wrapper for time.Time values.
+type Time struct {
 	_ nocmp // disallow non-atomic comparison
 
 	v Value
 }
 
-var _zeroError error
+var _zeroTime time.Time
 
-// NewError creates a new Error.
-func NewError(val error) *Error {
-	x := &Error{}
-	if val != _zeroError {
+// NewTime creates a new Time.
+func NewTime(val time.Time) *Time {
+	x := &Time{}
+	if val != _zeroTime {
 		x.Store(val)
 	}
 	return x
 }
 
-// Load atomically loads the wrapped error.
-func (x *Error) Load() error {
-	return unpackError(x.v.Load())
+// Load atomically loads the wrapped time.Time.
+func (x *Time) Load() time.Time {
+	return unpackTime(x.v.Load())
 }
 
-// Store atomically stores the passed error.
-func (x *Error) Store(val error) {
-	x.v.Store(packError(val))
+// Store atomically stores the passed time.Time.
+func (x *Time) Store(val time.Time) {
+	x.v.Store(packTime(val))
 }

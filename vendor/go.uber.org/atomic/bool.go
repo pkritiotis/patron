@@ -22,30 +22,60 @@
 
 package atomic
 
-// Error is an atomic type-safe wrapper for error values.
-type Error struct {
+import (
+	"encoding/json"
+)
+
+// Bool is an atomic type-safe wrapper for bool values.
+type Bool struct {
 	_ nocmp // disallow non-atomic comparison
 
-	v Value
+	v Uint32
 }
 
-var _zeroError error
+var _zeroBool bool
 
-// NewError creates a new Error.
-func NewError(val error) *Error {
-	x := &Error{}
-	if val != _zeroError {
+// NewBool creates a new Bool.
+func NewBool(val bool) *Bool {
+	x := &Bool{}
+	if val != _zeroBool {
 		x.Store(val)
 	}
 	return x
 }
 
-// Load atomically loads the wrapped error.
-func (x *Error) Load() error {
-	return unpackError(x.v.Load())
+// Load atomically loads the wrapped bool.
+func (x *Bool) Load() bool {
+	return truthy(x.v.Load())
 }
 
-// Store atomically stores the passed error.
-func (x *Error) Store(val error) {
-	x.v.Store(packError(val))
+// Store atomically stores the passed bool.
+func (x *Bool) Store(val bool) {
+	x.v.Store(boolToInt(val))
+}
+
+// CAS is an atomic compare-and-swap for bool values.
+func (x *Bool) CAS(old, new bool) (swapped bool) {
+	return x.v.CAS(boolToInt(old), boolToInt(new))
+}
+
+// Swap atomically stores the given bool and returns the old
+// value.
+func (x *Bool) Swap(val bool) (old bool) {
+	return truthy(x.v.Swap(boolToInt(val)))
+}
+
+// MarshalJSON encodes the wrapped bool into JSON.
+func (x *Bool) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.Load())
+}
+
+// UnmarshalJSON decodes a bool from JSON.
+func (x *Bool) UnmarshalJSON(b []byte) error {
+	var v bool
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	x.Store(v)
+	return nil
 }
