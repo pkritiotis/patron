@@ -279,7 +279,7 @@ github.com/rs/zerolog
 github.com/rs/zerolog/internal/json
 # github.com/sirupsen/logrus v1.8.1
 github.com/sirupsen/logrus
-# github.com/streadway/amqp v0.0.0-20180315184602-8e4aba63da9f
+# github.com/streadway/amqp v1.0.0
 ## explicit
 github.com/streadway/amqp
 # github.com/stretchr/testify v1.7.0
