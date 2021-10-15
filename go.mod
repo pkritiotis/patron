@@ -7,7 +7,7 @@ require (
 	github.com/Shopify/sarama v1.30.0
 	github.com/aws/aws-sdk-go v1.41.3
 	github.com/containerd/continuity v0.0.0-20200228182428-0f16d7a0959c // indirect
-	github.com/elastic/go-elasticsearch/v8 v8.0.0-20190731061900-ea052088db25
+	github.com/elastic/go-elasticsearch/v8 v8.0.0-20211001143748-fd99a833e74f
 	github.com/go-redis/redis/extra/rediscmd v0.2.0
 	github.com/go-redis/redis/v8 v8.11.4
 	github.com/go-sql-driver/mysql v1.6.0

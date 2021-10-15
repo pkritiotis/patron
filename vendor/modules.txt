@@ -99,7 +99,7 @@ github.com/eapache/go-resiliency/breaker
 github.com/eapache/go-xerial-snappy
 # github.com/eapache/queue v1.1.0
 github.com/eapache/queue
-# github.com/elastic/go-elasticsearch/v8 v8.0.0-20190731061900-ea052088db25
+# github.com/elastic/go-elasticsearch/v8 v8.0.0-20211001143748-fd99a833e74f
 ## explicit
 github.com/elastic/go-elasticsearch/v8
 github.com/elastic/go-elasticsearch/v8/esapi
