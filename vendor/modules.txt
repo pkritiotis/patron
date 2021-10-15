@@ -217,7 +217,7 @@ github.com/opencontainers/runc/libcontainer/user
 # github.com/opentracing-contrib/go-stdlib v0.0.0-20180313041242-367231351874
 ## explicit
 github.com/opentracing-contrib/go-stdlib/nethttp
-# github.com/opentracing/opentracing-go v1.1.0
+# github.com/opentracing/opentracing-go v1.2.0
 ## explicit
 github.com/opentracing/opentracing-go
 github.com/opentracing/opentracing-go/ext
