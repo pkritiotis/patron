@@ -127,11 +127,11 @@ func NewRecovery() Func {
 // NewAppNameVersion adds an app method header and an app path header to all responses. Existing values of these headers are overwritten.
 func NewAppNameVersion(name, version string) (Func, error) {
 	if name == "" {
-		return nil, errors.New("method cannot be empty")
+		return nil, errors.New("app name cannot be empty")
 	}
 
 	if version == "" {
-		return nil, errors.New("path cannot be empty")
+		return nil, errors.New("app version cannot be empty")
 	}
 
 	return func(next http.Handler) http.Handler {
@@ -383,7 +383,7 @@ func selectByWeight(weighted map[float64]string) (string, error) {
 // https://tools.ietf.org/html/rfc2616#section-14.3
 func NewCompression(deflateLevel int, ignoreRoutes ...string) (Func, error) {
 	if deflateLevel < -2 || deflateLevel > 9 { // https://www.rfc-editor.org/rfc/rfc1950#page-6
-		return nil, errors.New(fmt.Sprintf("invalid compression level %d: want value in range [-2, 9]", deflateLevel))
+		return nil, fmt.Errorf("invalid compression level %d: want value in range [-2, 9]", deflateLevel)
 	}
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

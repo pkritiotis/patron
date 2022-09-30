@@ -141,7 +141,6 @@ func TestMiddlewares(t *testing.T) {
 	}
 }
 
-// TestNewLoggingTracing tests the validation checks of the middleware constructor
 func TestNewLoggingTracing(t *testing.T) {
 	type args struct {
 		path             string
@@ -920,9 +919,9 @@ func TestNewAppVersion(t *testing.T) {
 		args        args
 		expectedErr string
 	}{
-		"empty method should return error":                   {args: args{name: "", version: "path"}, expectedErr: "method cannot be empty"},
-		"empty path should return error":                     {args: args{name: "appName", version: ""}, expectedErr: "path cannot be empty"},
-		"valid path and method should succeed without error": {args: args{name: "method", version: "1.0"}, expectedErr: ""},
+		"empty name should return error":                      {args: args{name: "", version: "version"}, expectedErr: "app name cannot be empty"},
+		"empty version should return error":                   {args: args{name: "appName", version: ""}, expectedErr: "app version cannot be empty"},
+		"valid name and version should succeed without error": {args: args{name: "name", version: "1.0"}, expectedErr: ""},
 	}
 
 	for name, test := range tests {
