@@ -76,7 +76,7 @@ func TestNewRoute(t *testing.T) {
 }
 
 func TestNewGetRoute(t *testing.T) {
-	rateLimiting, err := RateLimiting(1, 1)
+	rateLimiting, err := WithRateLimiting(1, 1)
 	require.NoError(t, err)
 	route, err := NewGetRoute("/api", func(writer http.ResponseWriter, request *http.Request) {},
 		[]RouteOptionFunc{rateLimiting}...)
@@ -94,7 +94,7 @@ func TestNewHeadRoute(t *testing.T) {
 }
 
 func TestNewPostRoute(t *testing.T) {
-	rateLimiting, err := RateLimiting(1, 1)
+	rateLimiting, err := WithRateLimiting(1, 1)
 	require.NoError(t, err)
 	route, err := NewPostRoute("/api", func(writer http.ResponseWriter, request *http.Request) {},
 		[]RouteOptionFunc{rateLimiting}...)
@@ -103,7 +103,7 @@ func TestNewPostRoute(t *testing.T) {
 }
 
 func TestNewPutRoute(t *testing.T) {
-	rateLimiting, err := RateLimiting(1, 1)
+	rateLimiting, err := WithRateLimiting(1, 1)
 	require.NoError(t, err)
 	route, err := NewPutRoute("/api", func(writer http.ResponseWriter, request *http.Request) {},
 		[]RouteOptionFunc{rateLimiting}...)
@@ -112,7 +112,7 @@ func TestNewPutRoute(t *testing.T) {
 }
 
 func TestNewPatchRoute(t *testing.T) {
-	rateLimiting, err := RateLimiting(1, 1)
+	rateLimiting, err := WithRateLimiting(1, 1)
 	require.NoError(t, err)
 	route, err := NewPatchRoute("/api", func(writer http.ResponseWriter, request *http.Request) {},
 		[]RouteOptionFunc{rateLimiting}...)
@@ -121,7 +121,7 @@ func TestNewPatchRoute(t *testing.T) {
 }
 
 func TestNewDeleteRoute(t *testing.T) {
-	rateLimiting, err := RateLimiting(1, 1)
+	rateLimiting, err := WithRateLimiting(1, 1)
 	require.NoError(t, err)
 	route, err := NewDeleteRoute("/api", func(writer http.ResponseWriter, request *http.Request) {},
 		[]RouteOptionFunc{rateLimiting}...)
@@ -139,7 +139,7 @@ func TestNewConnectRoute(t *testing.T) {
 }
 
 func TestNewOptionsRoute(t *testing.T) {
-	rateLimiting, err := RateLimiting(1, 1)
+	rateLimiting, err := WithRateLimiting(1, 1)
 	require.NoError(t, err)
 	route, err := NewOptionsRoute("/api", func(writer http.ResponseWriter, request *http.Request) {},
 		[]RouteOptionFunc{rateLimiting}...)
@@ -148,7 +148,7 @@ func TestNewOptionsRoute(t *testing.T) {
 }
 
 func TestNewTraceRoute(t *testing.T) {
-	rateLimiting, err := RateLimiting(1, 1)
+	rateLimiting, err := WithRateLimiting(1, 1)
 	require.NoError(t, err)
 	route, err := NewTraceRoute("/api", func(writer http.ResponseWriter, request *http.Request) {},
 		[]RouteOptionFunc{rateLimiting}...)
